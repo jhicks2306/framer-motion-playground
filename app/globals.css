@@ -7,6 +7,12 @@
   --foreground: #171717;
   --card: 0 0% 100%;
   --card-foreground: 240 10% 3.9%;
+  --primary: #0099FF;
+  --primary-foreground: #FFFFFF;
+  --secondary: #f3f3f3;
+  --secondary-foreground: #222222;
+  --secondary-placeholder: #999999;
+
 }
 
 @media (prefers-color-scheme: dark) {

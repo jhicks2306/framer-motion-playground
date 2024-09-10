@@ -1,0 +1,69 @@
+/* styles/slider.css */
+.hue-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 12px;
+    background: transparent; /* This will be overridden by the gradient below */
+    border-radius: 8px;
+    outline: none;
+    opacity: 1;
+    transition: opacity .2s;
+  }
+  
+  /* For WebKit browsers */
+  .hue-slider::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 12px;
+    background: linear-gradient(to right, #FF0000, #FFFF00, #00FF00, #00FFFF, #0000FF, #FF00FF, #FF0000); /* Gradient fill */
+    border-radius: 8px;
+  }
+  
+  /* For Firefox */
+  .hue-slider::-moz-range-track {
+    width: 100%;
+    height: 12px;
+    background: linear-gradient(to right, #FF0000, #FFFF00, #00FF00, #00FFFF, #0000FF, #FF00FF, #FF0000); /* Gradient fill */
+    border-radius: 8px;
+  }
+  
+  /* For Internet Explorer and Edge (older versions) */
+  .hue-slider::-ms-track {
+    width: 100%;
+    height: 12px;
+    background: transparent; /* IE11/Edge use separate styles for gradient */
+    border-color: transparent;
+    color: transparent;
+  }
+  
+  /* Slider thumb styling */
+  .hue-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    position: relative;
+    top: -3px;
+    z-index: 1;
+  }
+  
+  /* Firefox */
+  .hue-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 3px solid #fff;
+  }
+  
+  /* Internet Explorer */
+  .hue-slider::-ms-thumb {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 3px solid #fff;
+  }
+  
