@@ -1,6 +1,8 @@
 import Image from "next/image";
 import * as motion from "framer-motion/client";
 import CustomSlider from "../components/HueSlider";
+import ColorBar from "../components/ColorBar";
+
 
 
 export default function Home() {
@@ -21,6 +23,7 @@ export default function Home() {
             <input type="text" className="bg-secondary text-secondary-foreground placeholder-secondary-placeholder text-xs h-[30px] px-2.5 rounded-md" placeholder="Name of color set..." />
             <div className="bg-black grow rounded-md"></div>
             <div className="bg-black h-[32px] rounded-md"></div>
+            <ColorBar/>
             <CustomSlider/>
             <motion.button className="bg-secondary text-secondary-foreground h-[30px] text-xs rounded-md">Auto-calculate</motion.button>
             <motion.button className="bg-primary text-primary-foreground h-[30px] text-xs rounded-md">Add colors to project assets</motion.button>
