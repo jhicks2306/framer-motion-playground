@@ -1,7 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { act } from 'react';
 import { useState } from 'react';
+import { ColorBlockProps } from "./ColorBlock"
+import ColorBlock from "./ColorBlock"
 
 const getRandomColor = () => {
   const letters = '0123456789ABCDEF';
@@ -21,6 +23,7 @@ const ColorBar = () => {
     '#afbcc0',
     '#1d221d',
   ]);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const handleIncrement = () => {
     const newColor = getRandomColor();
@@ -33,16 +36,21 @@ const ColorBar = () => {
     }
   };
 
+  const handleBlockClick = (index: number) => {
+    setActiveIndex(index === activeIndex ? null : index)
+  }
+
   return (
     <div className="flex items-center space-x-4 h-[32px]">
       {/* Slider */}
       <div className="relative w-full h-full flex rounded-lg overflow-hidden">
         {colorBlocks.map((color, index) => (
-          <div
+          <ColorBlock
             key={index}
-            style={{ backgroundColor: color }}
-            className="flex-1 h-full"
-          ></div>
+            color={color}
+            isActive= {index === activeIndex}
+            onClick={() => handleBlockClick(index)}
+          ></ColorBlock>
         ))}
       </div>
 

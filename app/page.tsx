@@ -22,7 +22,6 @@ export default function Home() {
           <div className="flex grow flex-col p-4 gap-2.5 bg-white"> 
             <input type="text" className="bg-secondary text-secondary-foreground placeholder-secondary-placeholder text-xs h-[30px] px-2.5 rounded-md" placeholder="Name of color set..." />
             <div className="bg-black grow rounded-md"></div>
-            <div className="bg-black h-[32px] rounded-md"></div>
             <ColorBar/>
             <CustomSlider/>
             <motion.button className="bg-secondary text-secondary-foreground h-[30px] text-xs rounded-md">Auto-calculate</motion.button>
