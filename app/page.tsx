@@ -4,7 +4,6 @@ import CustomSlider from "../components/HueSlider";
 import ColorBar from "../components/ColorBar";
 
 
-
 export default function Home() {
   const handleColorChange = (color: string) => {
     console.log("Selected color:", color);
