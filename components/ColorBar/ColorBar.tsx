@@ -2,7 +2,6 @@
 
 import React, { act } from 'react';
 import { useState } from 'react';
-import { ColorBlockProps } from "./ColorBlock"
 import ColorBlock from "./ColorBlock"
 
 const getRandomColor = () => {

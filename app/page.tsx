@@ -1,7 +1,8 @@
 import Image from "next/image";
 import * as motion from "framer-motion/client";
-import CustomSlider from "../components/HueSlider";
+import HueSlider from "../components/HueSlider";
 import ColorBar from "../components/ColorBar";
+import SaturationBrightnessPicker from "../components/SaturationBrightnessPicker"
 
 
 export default function Home() {
@@ -20,9 +21,9 @@ export default function Home() {
           </div>
           <div className="flex grow flex-col p-4 gap-2.5 bg-white"> 
             <input type="text" className="bg-secondary text-secondary-foreground placeholder-secondary-placeholder text-xs h-[30px] px-2.5 rounded-md" placeholder="Name of color set..." />
-            <div className="bg-black grow rounded-md"></div>
+            <SaturationBrightnessPicker color="rgb(238, 255, 255)"/>
             <ColorBar/>
-            <CustomSlider/>
+            <HueSlider/>
             <motion.button className="bg-secondary text-secondary-foreground h-[30px] text-xs rounded-md">Auto-calculate</motion.button>
             <motion.button className="bg-primary text-primary-foreground h-[30px] text-xs rounded-md">Add colors to project assets</motion.button>
           </div>
