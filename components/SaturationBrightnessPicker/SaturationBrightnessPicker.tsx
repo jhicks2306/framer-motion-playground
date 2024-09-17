@@ -1,6 +1,9 @@
 'use client';
 
 import React from 'react';
+import { useRef } from 'react';
+import { motion } from 'framer-motion';
+import ColorHandle from '../ColorHandle';
 
 interface SaturationBrightnessPickerProps {
   color: string;
@@ -8,13 +11,11 @@ interface SaturationBrightnessPickerProps {
 
 const SaturationBrightnessPicker: React.FC<SaturationBrightnessPickerProps> = ({ color }) => {
   const [r, g, b] = color.match(/\d+/g)?.map(Number) ?? [0, 0, 0];
-  console.log(r,g,b)
 
   const rgbToHsl = (r: number, g: number, b: number): [number, number, number] => {
     r /= 255;
     g /= 255;
     b /= 255;
-    console.log(r,g,b)
 
     const max = Math.max(r, g, b);
     const min = Math.min(r, g, b);
@@ -51,8 +52,13 @@ const SaturationBrightnessPicker: React.FC<SaturationBrightnessPickerProps> = ({
     hsl(${normalizedHue}, 100%, 50%, 0) 100%
   )`;
 
+  // Create a reference for the draggable area
+  const containerRef = useRef<HTMLDivElement>(null);
+
   return (
-    <div className='grow overflow-hidden'
+    <div
+      ref={containerRef}
+      className='grow overflow-hidden relative'
       style={{
         background: gradientBackground,
         borderRadius: '8px',
@@ -66,6 +72,31 @@ const SaturationBrightnessPicker: React.FC<SaturationBrightnessPickerProps> = ({
         bottom: '100%'
       }}>
     </div>
+      {/* Draggable white circular div */}
+      <motion.div
+        drag
+        dragConstraints={containerRef}
+        className='absolute w-4 h-4 bg-white rounded-full shadow-lg pointer-'
+        style={{
+          top: '80%', // Starting position relative to the parent div
+          left: '90%', // Starting position relative to the parent div
+          zIndex: 2,
+        }}
+        whileDrag={{
+          scale: 1.2,
+          cursor: 'grabbing',
+        }}
+        dragMomentum={false}
+        dragElastic={0}
+        whileHover={{
+          scale: 1.2,
+          cursor: 'grab'
+        }}
+        onDrag={(event, info) => {
+          console.log('x:', info.offset.x, 'y:', info.offset.y);
+        }}
+      />
+      <ColorHandle containerRef={containerRef} hue={hue} />
     </div>
   );
 };
