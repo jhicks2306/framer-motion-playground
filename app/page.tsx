@@ -21,7 +21,7 @@ export default function Home() {
           </div>
           <div className="flex grow flex-col p-4 gap-2.5 bg-white"> 
             <input type="text" className="bg-secondary text-secondary-foreground placeholder-secondary-placeholder text-xs h-[30px] px-2.5 rounded-md" placeholder="Name of color set..." />
-            <SaturationBrightnessPicker color="rgb(238, 255, 255)"/>
+            <SaturationBrightnessPicker color="rgb(180, 255, 255)"/>
             <ColorBar/>
             <HueSlider/>
             <motion.button className="bg-secondary text-secondary-foreground h-[30px] text-xs rounded-md">Auto-calculate</motion.button>

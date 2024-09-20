@@ -35,8 +35,11 @@ const SaturationBrightnessPicker: React.FC<SaturationBrightnessPickerProps> = ({
     return [h * 360, s * 100, l * 100];
   };
 
-  const [hue] = rgbToHsl(r, g, b);
+  const [hue, saturation, luminosity] = rgbToHsl(r, g, b);
   const normalizedHue = Math.min(360, Math.max(0, hue));
+  const normalizedSaturation = Math.min(100, Math.round(saturation));
+  const normalizedLuminosity = Math.min(100, Math.round(luminosity));
+  const normalizedHsl = [normalizedHue, normalizedSaturation, normalizedLuminosity]
 
   // Define the linear gradient for hue, saturation, and lightness
   const gradientBackground = `linear-gradient(
@@ -73,30 +76,7 @@ const SaturationBrightnessPicker: React.FC<SaturationBrightnessPickerProps> = ({
       }}>
     </div>
       {/* Draggable white circular div */}
-      <motion.div
-        drag
-        dragConstraints={containerRef}
-        className='absolute w-4 h-4 bg-white rounded-full shadow-lg pointer-'
-        style={{
-          top: '80%', // Starting position relative to the parent div
-          left: '90%', // Starting position relative to the parent div
-          zIndex: 2,
-        }}
-        whileDrag={{
-          scale: 1.2,
-          cursor: 'grabbing',
-        }}
-        dragMomentum={false}
-        dragElastic={0}
-        whileHover={{
-          scale: 1.2,
-          cursor: 'grab'
-        }}
-        onDrag={(event, info) => {
-          console.log('x:', info.offset.x, 'y:', info.offset.y);
-        }}
-      />
-      <ColorHandle containerRef={containerRef} hue={hue} />
+      <ColorHandle containerRef={containerRef} normalizedHsl={normalizedHsl} />
     </div>
   );
 };
