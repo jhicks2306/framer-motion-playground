@@ -49,7 +49,7 @@ export default function ColorHandle ({containerRef, normalizedHsl} : ColorHandle
      <motion.div
         drag
         dragConstraints={containerRef}
-        className='absolute w-4 h-4 bg-white rounded-full shadow-lg border-white border-2'
+        className='absolute w-4 h-4 bg-white rounded-full shadow-lg border-white border-4'
         style={{
           top: `${initialY}%`, // Starting position relative to the parent div
           left: `${initialX}%`, // Starting position relative to the parent div
