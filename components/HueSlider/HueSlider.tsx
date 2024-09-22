@@ -4,13 +4,16 @@ import React from 'react';
 import { useState } from 'react';
 import './HueSlider.css';
 
-export default function HueSlider () {
-  const [hue, setHue] = useState(50); // Default slider value
+type HueSliderProps = {
+  hue: number;
+  setHue: (hue: number) => void;
+}
 
+export default function HueSlider ({ hue, setHue }: HueSliderProps) {
 
     // Handle slider value change
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      console.log(hue)
+      setHue(Number(e.target.value));
     };
 
   return (

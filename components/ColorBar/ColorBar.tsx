@@ -13,16 +13,22 @@ const getRandomColor = () => {
   return color;
 };
 
-const ColorBar = () => {
-  const [colorBlocks, setColorBlocks] = useState<string[]>([
-    '#e5e9e6',
-    '#3b4b50',
-    '#502e2f',
-    '#243033',
-    '#afbcc0',
-    '#1d221d',
-  ]);
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+type ColorBarProps = {
+  colorBlocks: string[];
+  setColorBlocks: (colors: string[]) => void;
+  activeIndex: number | null;
+  setActiveIndex: (index: number | null) => void;
+}
+
+
+export default function ColorBar ({
+    colorBlocks,
+    setColorBlocks,
+    activeIndex,
+    setActiveIndex
+  }:
+  ColorBarProps
+){
 
   const handleIncrement = () => {
     const newColor = getRandomColor();
@@ -71,5 +77,3 @@ const ColorBar = () => {
     </div>
   );
 };
-
-export default ColorBar;

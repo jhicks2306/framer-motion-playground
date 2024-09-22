@@ -5,11 +5,18 @@ import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import ColorHandle from '../ColorHandle';
 
-interface SaturationBrightnessPickerProps {
+type SaturationBrightnessPickerProps = {
+  // hue: number;
   color: string;
 }
 
-const SaturationBrightnessPicker: React.FC<SaturationBrightnessPickerProps> = ({ color }) => {
+export default function SaturationBrightnessPicker ({
+  // TODO: Update this component to accept a hue and set of colors for the color handles.
+  // hue,
+  color
+}:
+SaturationBrightnessPickerProps
+) {
   const [r, g, b] = color.match(/\d+/g)?.map(Number) ?? [0, 0, 0];
 
   const rgbToHsl = (r: number, g: number, b: number): [number, number, number] => {
@@ -80,6 +87,3 @@ const SaturationBrightnessPicker: React.FC<SaturationBrightnessPickerProps> = ({
     </div>
   );
 };
-
-
-export default SaturationBrightnessPicker;
